@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+  Hello This the <a href="/">Home Page</a>
+  <% @users.each do |user| %>
+    <div>
+      <img class="image-profile" src="<%= user.image %>" />
+      <%= user.name %> is <%= user.age %> years old!
+      <div>
+        <%= form_with url:"/delete_user/", method: :patch do |form| %>
+          <%= form.hidden_field :email, value:user.email %>
+          <%= form.button "Delete", formmethod: :delete %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <a href="/delete_users">Delete Users</a>
+  <div>
+    <%= form_with url:"/add_user" do |form| %>
+      <%= form.label :name, "Name:" %>
+      <%= form.text_field :name %>
+      <%= form.label :email, "Email:" %>
+      <%= form.text_field :email %>
+      <%= form.label :age, "Age:" %>
+      <%= form.number_field :age %>
+      <%= form.label :image, "Image:" %>
+      <%= form.text_field :image %>
+      <%= form.submit "Add User" %>
+    <% end %>
+  </div>
+</body>
+</html>
