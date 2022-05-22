@@ -13,4 +13,12 @@ Rails.application.routes.draw do
 
   get '/delete_user/:id', to:'users#delete_user'
 
+  get '/get_tasks', to: 'tasks#show'
+
+  post '/add_task', to:'tasks#add_task'
+
+  get '/delete_task/:id', to:'tasks#delete_task'
+
+  get '/delete_tasks', to:'tasks#delete_tasks'
+
 end
